@@ -4,8 +4,99 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome To TONMOY's Bank</title>
+    <link rel="shortcut icon" href="fav.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
-    <h1>Welcome To TONMOY'S Bank</h1>
+    <div id="submit-area">
+        <h1 class="text-center">Welcome To TONMOY'S Bank</h1>
+        <div class="login-area">
+            <h4>Login</h4> 
+            <input type="email" class="form-control" placeholder="Enter Your E-mail"> <br>
+            <input type="password" class="form-control" placeholder="Enter Your Password"> <br>
+            <button id="login-button" class="btn btn-success" >Enter</button>
+        </div>
+    </div>
+    <div id="transaction-area">
+        <div class="row">
+        <div class=" col-md-4  " >
+            <div class="deposit status">
+                <h5>Deposit</h5>
+                <h2>$<span id="currentDeposit">00</span></h2>
+            </div>
+        </div>
+        <div class=" col-md-4 ">
+            <div class="withdraw status">
+                <h5>Withdraw</h5>
+                <h2>$00</h2>
+            </div>
+        </div>
+        <div class=" col-md-4">
+            <div class="balance status">
+                <h5>Balance</h5>
+                <h2>$ <span id="currentBalance">1240</span></h2>
+            </div>
+        </div>
+    </div>
+    <div id="box-area">
+        <div class="row">
+        <div class="col-md-6 dep">
+           <div class="login-area">
+            <h4>Deposit</h4> 
+            <input id="depositAmount" type="text" class="form-control" placeholder="$Amount You Want To Deposit "> <br> <br>
+            <button id="addDeposit" class="btn btn-success">Deposit</button>
+           </div>
+        </div>
+        <div class="col-md-6 with">
+            <div class="login-area">
+                <h4>Withdraw</h4> 
+                <input type="text" class="form-control" placeholder="$Amount You Want To Withdraw "> <br> <br>
+                <button class="btn btn-success">Withdraw</button>
+            </div>
+        </div>
+    </div>
+        
+
+    </div>
+    </div>
+
+    
+
+                    <!-- javascript -->
+
+    <script>
+          const logiB = document.getElementById("login-button");
+          logiB.addEventListener("click",function(){
+            const submitArea =  document.getElementById("submit-area");
+            submitArea.style.display= "none";
+
+            const trans = document.getElementById("transaction-area");
+            trans.style.display= "block";
+            const boxArea = document.getElementById("box-area");
+            boxArea.style.display = "block";
+          })
+
+// deposit
+                 const despositBtn = document.getElementById("addDeposit");
+                 despositBtn.addEventListener("click",function(){
+                     const depositAmount = document.getElementById("depositAmount").value;
+                     const depositNumber = parseFloat(depositAmount);
+
+                     const currentDeposit = document.getElementById("currentDeposit").innerText;
+                     const currentDepositNumber = parseFloat(currentDeposit);
+                     const totalDeposit = depositNumber + currentDepositNumber;
+
+                     document.getElementById("currentDeposit").innerText = totalDeposit;
+
+                     const currentBalance =  document.getElementById("currentBalance").innerText;
+                     const currentBalanceNumber = parseFloat(currentBalance);
+                     const totalBalance = depositNumber + currentBalanceNumber;
+                     document.getElementById("currentBalance").innerText = totalBalance;
+
+                     document.getElementById("depositAmount").value = "";
+                 })
+    </script>
 </body>
 </html>
